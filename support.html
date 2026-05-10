@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>技术支持 | 应用帮助中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1c1f;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+                border-radius: 18px;
+            }
+            body {
+                padding: 12px;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .app-subtitle {
+            font-size: 16px;
+            color: #6c6c70;
+            border-left: 3px solid #007aff;
+            padding-left: 12px;
+            margin-top: 4px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2:before {
+            content: '';
+            width: 5px;
+            height: 22px;
+            background: #007aff;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 6px 0;
+            color: #1c1c1e;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            background: #f9f9fb;
+            padding: 14px 18px;
+            border-radius: 16px;
+            transition: background 0.2s;
+        }
+
+        .contact-icon {
+            font-size: 28px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .contact-detail {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6c6c70;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 17px;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .contact-value a {
+            color: #007aff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 122, 255, 0.3);
+        }
+
+        .contact-value a:hover {
+            border-bottom-color: #007aff;
+        }
+
+        .response-time {
+            font-size: 13px;
+            color: #8e8e93;
+            margin-top: 8px;
+            background: #f2f2f5;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* FAQ 列表 */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e9e9ef;
+            padding-bottom: 16px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #1d1c1f;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .faq-question:before {
+            content: "Q";
+            background: #e9e9ef;
+            font-weight: 600;
+            font-size: 13px;
+            width: 22px;
+            height: 22px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #007aff;
+        }
+
+        .faq-answer {
+            color: #3a3a3c;
+            margin-left: 30px;
+            font-size: 15px;
+        }
+
+        .faq-answer a {
+            color: #007aff;
+            text-decoration: none;
+        }
+
+        /* 资源链接 */
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            margin-top: 12px;
+        }
+
+        .resource-link {
+            background: #f9f9fb;
+            border-radius: 14px;
+            padding: 12px 18px;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .resource-link a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #007aff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .resource-link:hover {
+            background: #efeff4;
+            transform: translateY(-2px);
+        }
+
+        .version-info {
+            background: #f9f9fb;
+            border-radius: 14px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #6c6c70;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: #8e8e93;
+            margin-top: 30px;
+            padding: 16px 0 24px;
+            border-top: 0.5px solid #e9e9ef;
+        }
+
+        .btn-outline {
+            border: 1px solid #007aff;
+            background: transparent;
+            border-radius: 30px;
+            padding: 6px 14px;
+            font-size: 14px;
+            color: #007aff;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: #007aff10;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .privacy-note {
+            background: #fef7e0;
+            border-left: 4px solid #ff9f0a;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            margin-top: 20px;
+            color: #6c4e0e;
+        }
+
+        .privacy-note strong {
+            color: #b45f06;
+        }
+
+        /* 调整间距 */
+        .mt-2 {
+            margin-top: 8px;
+        }
+        .mb-1 {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 主标题卡片 -->
+    <div class="card" style="padding-bottom: 20px;">
+        <h1>📱 技术支持</h1>
+        <div class="app-subtitle">[您的应用名称] · 帮助与常见问题解答</div>
+        <p style="color: #3a3a3c; margin-top: 8px;">遇到任何问题？我们随时为您提供专业、快速的帮助。请通过下方方式联系我们，通常会在 <strong>1~2 个工作日</strong> 内回复。</p>
+    </div>
+
+    <!-- 联系方式卡片 (必须包含有效联系方式) -->
+    <div class="card">
+        <h2>📞 联系支持团队</h2>
+        <div class="contact-methods">
+            <!-- 电子邮件（主要方式，必须提供） -->
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-detail">
+                    <div class="contact-label">官方支持邮箱</div>
+                    <div class="contact-value">
+                        <a href="mailto:support@yourappdomain.com?subject=【应用技术支持】请描述您的问题">987661385@qq.com</a>
+                    </div>
+                    <div class="response-time">📬 工作日响应，紧急问题请注明 [紧急]</div>
+                </div>
+            </div>
+            <!-- 可选: 提供反馈表单建议 (纯前端静态演示，实际提交跳转mailto) -->
+            <div class="contact-item">
+                <div class="contact-icon">📝</div>
+                <div class="contact-detail">
+                    <div class="contact-label">快速反馈</div>
+                    <div class="contact-value">
+                        <a href="mailto:support@yourappdomain.com?subject=反馈：&body=请详细描述您的问题，并告知设备型号和App版本。">点击发送反馈邮件</a>
+                    </div>
+                    <div class="response-time">💡 建议附带截图，处理更高效</div>
+                </div>
+            </div>
+        </div>
+        <!-- 额外的说明 -->
+        <div class="privacy-note" style="margin-top: 16px;">
+            🔒 <strong>隐私保护提示：</strong> 我们重视您的隐私。任何技术支持邮件仅用于解决您的问题，不会泄露给第三方。更多信息请查看下方《隐私政策》。
+        </div>
+    </div>
+
+    <!-- 常见问题解答 (FAQ) 真实内容，无占位符 -->
+    <div class="card">
+        <h2>❓ 常见问题解答</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">如何恢复已购买的项目或订阅？</div>
+                <div class="faq-answer">
+                    请确保您使用的是同一 Apple ID 登录。在应用内找到「恢复购买」按钮（通常位于设置页面），点击后即可恢复。若仍无效，请联系我们并提供订单截图，我们将在24小时内协助处理。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">应用出现闪退或卡顿怎么办？</div>
+                <div class="faq-answer">
+                    请尝试以下步骤：<br>
+                    1. 确保 iOS 系统已更新至最新版本；<br>
+                    2. 重启设备后再打开应用；<br>
+                    3. 删除应用并从 App Store 重新下载（注意备份数据）。<br>
+                    如问题依然存在，请将设备日志及操作步骤发送至支持邮箱，我们会尽快修复。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">忘记账号 / 如何联系人工客服？</div>
+                <div class="faq-answer">
+                    由于隐私保护，我们不存储可识别的用户账户信息。您可以直接通过上方邮箱联系我们，提供注册时使用的 Apple ID 或相关交易凭证，客服会帮您核实。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何报告功能建议或 bug？</div>
+                <div class="faq-answer">
+                    非常欢迎您的意见！请发送邮件至 support@yourappdomain.com，标题注明【功能建议】或【Bug报告】，并详细描述您期望的功能或问题复现步骤。我们会定期评估并在更新中优化。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">是否支持退款？如何操作？</div>
+                <div class="faq-answer">
+                    所有 App Store 交易均由 Apple 负责处理。如需退款，请访问 <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">Apple 问题报告页面</a> 提交申请。我们无法直接办理退款，但可提供购买咨询。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 资源链接：隐私政策+更多帮助 -->
+    <div class="card">
+        <h2>🔗 重要资源</h2>
+        <div class="resources">
+            <div class="resource-link">
+                <a href="https://wuhuazizzz.github.io/jileduo/privacy" id="privacyPolicyLink" target="_blank">📄 隐私政策</a>
+            </div>
+            <div class="resource-link">
+                <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">📜 标准最终用户许可协议 (EULA)</a>
+            </div>
+            <div class="resource-link">
+                <a href="mailto:support@yourappdomain.com?subject=App技术支持-请求帮助">💬 直接邮件求助</a>
+            </div>
+        </div>
+
+        <!-- 版本信息及更新日志（可自定义） -->
+        <div class="version-info">
+            <span>📌 当前稳定版本：<strong>v1.2.0</strong></span>
+            <span>🕒 最后更新：2026年5月</span>
+            <span>🍎 iOS 15.0 及以上</span>
+        </div>
+
+        <!-- 替换提醒（视觉注解，不影响审核） -->
+        <div style="font-size: 13px; color: #8e8e93; margin-top: 16px; background: #f5f5f7; padding: 8px 12px; border-radius: 12px;">
+            ⚙️ <strong>开发者备注：</strong> 请将上方邮箱地址 <code>support@yourappdomain.com</code> 替换为您的真实支持邮箱。<br>
+            隐私政策链接需指向您实际部署的有效URL（见下方说明），否则 App Store 审核会失败。
+        </div>
+    </div>
+
+    <!-- 关于隐私政策的特别提示，满足必须包含隐私政策链接的公开访问要求 -->
+    <div class="card" style="background: #fefefe; border: 0.5px solid #e5e5ea;">
+        <h2>🔏 隐私政策说明</h2>
+        <p style="margin-bottom: 12px;">我们尊重并保护用户隐私。本应用收集的数据仅用于优化功能体验，不会向第三方出售或共享。详细隐私条款请点击上方「隐私政策」链接查看完整内容。</p>
+        <p><strong>根据 Apple 审核指南：</strong> 您必须在 App Store Connect 中提供有效的隐私政策网址，并且该网址内容需与数据收集行为一致。请确保您已经准备好独立的隐私政策页面（HTML），并将上方“隐私政策”链接替换为真实地址。</p>
+        <div style="margin-top: 16px;">
+            <span style="background: #e9e9ef; padding: 6px 12px; border-radius: 20px; font-size: 13px;">📘 如何设置：</span>
+            <p style="margin-top: 8px; font-size: 14px;">1️⃣ 创建 <code>privacy.html</code> 或使用 GitHub Pages / 自有服务器托管隐私政策内容。<br>
+            2️⃣ 将本页面的隐私政策链接 <code>href</code> 修改为实际 HTTPS 地址。<br>
+            3️⃣ 在 App Store Connect “应用信息” 页面填写同样的隐私政策网址。</p>
+        </div>
+        <!-- 模拟占位，实际发布时必须更改链接 -->
+    </div>
+
+    <footer>
+        <p>© 2026 [您的应用名称] 技术支持团队 · 保留所有权利</p>
+        <p style="margin-top: 6px;">提供专业 iOS 应用支持 | 竭诚为您服务</p>
+    </footer>
+</div>
+
+<script>
+    // 提示开发者修改重要信息 —— 该脚本仅用于提醒，不会影响页面基本功能
+    (function() {
+        // 检测当前隐私政策链接是否为占位符，如果是占位则控制台输出友善警告
+        const privacyLink = document.getElementById('privacyPolicyLink');
+        if (privacyLink && (privacyLink.href === '#' || privacyLink.href.endsWith('#'))) {
+            console.warn('⚠️ [App Store 审核提醒] 技术支持页面的隐私政策链接是占位符 "#"。请在正式提交审核前，将 privacyPolicyLink 的 href 替换为有效的隐私政策URL（例如 https://你的域名/privacy-policy）。');
+            // 添加轻微界面提示（不会导致不通过，仅辅助提醒）
+            const privacyCard = document.querySelector('.card:last-of-type');
+            if (privacyCard && !document.querySelector('.reminder-badge')) {
+                const reminder = document.createElement('div');
+                reminder.className = 'reminder-badge';
+                reminder.style.marginTop = '12px';
+                reminder.style.padding = '8px';
+                reminder.style.backgroundColor = '#ffd1d1';
+                reminder.style.borderRadius = '12px';
+                reminder.style.fontSize = '13px';
+                reminder.style.color = '#b91c1c';
+                reminder.innerHTML = '⚠️ <strong>审核前必改：</strong> 请将上方「隐私政策」链接替换为真实有效的隐私政策页面网址，否则将被 App Store 拒绝。';
+                privacyCard.appendChild(reminder);
+            }
+        }
+
+        // 检测邮箱是否还是示例邮箱，给出控制台提示
+        const emailElements = document.querySelectorAll('.contact-value a[href^="mailto:"]');
+        emailElements.forEach(el => {
+            let href = el.getAttribute('href');
+            if (href && (href.includes('support@yourappdomain.com') || href.includes('example.com'))) {
+                console.warn('📧 请将技术支持邮箱替换为您自己的真实邮箱地址（例如 hello@yourcompany.com）。当前为示例邮箱。修改方法：全局搜索替换 support@yourappdomain.com');
+            }
+        });
+
+        // 动态显示当前年份（可选，footer已经写2026但可动态）
+        const footerP = document.querySelector('footer p:first-child');
+        if (footerP) {
+            const currentYear = new Date().getFullYear();
+            if (currentYear !== 2026) {
+                footerP.innerHTML = `© ${currentYear} [您的应用名称] 技术支持团队 · 保留所有权利`;
+            }
+        }
+    })();
+</script>
+</body>
+</html>
